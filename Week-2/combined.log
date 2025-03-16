@@ -1,0 +1,19 @@
+{"level":"info","message":"Parameters 4 and 10 received for addition","service":"add-service"}
+{"level":"info","message":"Parameters 4 and 10 received for addition","service":"add-service"}
+{"level":"error","message":"n2 is incorrectly defined","service":"add-service"}
+{"level":"error","message":"n1 is incorrectly defined","service":"add-service"}
+{"level":"error","message":"n1 is incorrectly defined","service":"add-service"}
+{"level":"error","message":"n1 is incorrectly defined","service":"add-service"}
+{"level":"error","message":"n2 is incorrectly defined","service":"add-service"}
+{"level":"error","message":"n1 is incorrectly defined","service":"add-service"}
+{"level":"info","message":"Parameters 9 and 8 received for addition","service":"add-service"}
+{"level":"info","message":"Addition of 4 and 2: 6"}
+{"level":"info","message":"Subtraction of 4 and 2: 2"}
+{"level":"info","message":"Multiplication of 4 and 2: 8"}
+{"level":"info","message":"Addition of 2 and 3: 5"}
+{"level":"info","message":"Addition of 3 and 3: 6"}
+{"level":"error","message":"Addition: Invalid input"}
+{"level":"info","message":"Addition of 3 and 2: 5"}
+{"level":"info","message":"Addition of 3 and 2: 5"}
+{"level":"info","message":"Subtraction of 4 and 2: 2"}
+{"level":"info","message":"Multiplication of 3 and 3: 9"}
