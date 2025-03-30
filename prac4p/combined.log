@@ -1,0 +1,6 @@
+{"level":"info","message":"Division of 1 and 6: 0.16666666666666666"}
+{"level":"info","message":"Division of 3 and 8: 0.375"}
+{"level":"error","message":"Division error: Error: Division by zero is not allowed"}
+{"level":"info","message":"Addition of 1 and 6: 7"}
+{"level":"info","message":"Addition of 5 and 7: 12"}
+{"level":"info","message":"Addition of 5 and 6: 11"}

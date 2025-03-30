@@ -1,0 +1,8 @@
+{"level":"info","message":"Addition of 5 and 6: 11","service":"calculator-microservice"}
+{"level":"info","message":"Subtraction of 7 and 9: -2","service":"calculator-microservice"}
+{"level":"info","message":"Multiplication of 8 and 9: 72","service":"calculator-microservice"}
+{"level":"info","message":"Division of 3 and 6: 0.5","service":"calculator-microservice"}
+{"level":"info","message":"Multiplication of 8 and 0: 0","service":"calculator-microservice"}
+{"level":"error","message":"n2 is incorrectly defined","service":"calculator-microservice"}
+{"level":"error","message":"n1 is incorrectly defined","service":"calculator-microservice"}
+{"level":"error","message":"n2 is incorrectly defined","service":"calculator-microservice"}
