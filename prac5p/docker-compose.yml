@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    container_name: calculator-web-app
+    image: anushakatuwal99/calculator-web-server
+    restart: always
+    ports:
+      - 3090:3000
+    command: node calculator.js
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 10s
