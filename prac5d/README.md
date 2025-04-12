@@ -63,6 +63,9 @@ tail -f logs/combined.log
 
 ## Push Docker Image to Google Cloud Registry
 
+### Authenticate Docker with your private Artifact Registry
+gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin australia-southeast2-docker.pkg.dev
+
 If you want to push the Docker image to Google Cloud Registry, follow these steps:
 
 ### 1. Tag the Image
