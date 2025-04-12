@@ -36,7 +36,7 @@ docker-compose up
 docker-compose down
 
 
-## 🌐 Access the App
+## Access the App
 
 The app will be running at: http://localhost:3090
 
