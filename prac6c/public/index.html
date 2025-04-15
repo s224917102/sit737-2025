@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Operations</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
+</head>
+<body>
+  <div class="container">
+    <h1>Math Operations</h1>
+    <input type="text" id="display" class="input-field" readonly>
+
+    <div class="button-container">
+      <button onclick="addToDisplay('7')">7</button>
+      <button onclick="addToDisplay('8')">8</button>
+      <button onclick="addToDisplay('9')">9</button>
+      <button onclick="addToDisplay('+')" class="operation-btn">+</button>
+
+      <button onclick="addToDisplay('4')">4</button>
+      <button onclick="addToDisplay('5')">5</button>
+      <button onclick="addToDisplay('6')">6</button>
+      <button onclick="addToDisplay('-')" class="operation-btn">-</button>
+
+      <button onclick="addToDisplay('1')">1</button>
+      <button onclick="addToDisplay('2')">2</button>
+      <button onclick="addToDisplay('3')">3</button>
+      <button onclick="addToDisplay('*')" class="operation-btn">*</button>
+
+      <button onclick="addToDisplay('0')">0</button>
+      <button onclick="addToDisplay('.')">.</button>
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="addToDisplay('/')" class="operation-btn">/</button>
+
+      <button onclick="addToDisplay('^')">^</button>
+      <button onclick="addToDisplay('√')">√</button>
+      <button onclick="addToDisplay('%')">%</button>
+      <button onclick="calculateResult()" style="background-color: #FF5733;">=</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to append the clicked button's value to the display
+    function addToDisplay(value) {
+      const display = document.getElementById("display");
+      display.value += value;
+    }
+  
+    // Function to clear the display
+    function clearDisplay() {
+      const display = document.getElementById("display");
+      display.value = '';
+    }
+  
+    // Function to calculate the result based on the expression entered
+    function calculateResult() {
+      const display = document.getElementById("display");
+      let expression = display.value;
+  
+      // Log the original expression for debugging
+      console.log(`Original Expression: ${expression}`);
+  
+      // Replace '√' with 'Math.sqrt' for square root operation
+      if (expression.includes('√')) {
+        expression = expression.replace(/√/g, 'Math.sqrt(') + ')'; // Add closing parenthesis for square root
+      }
+  
+      // Replace '^' with '^' for exponentiation (JavaScript uses '^' for exponentiation)
+      expression = expression.replace(/\^/g, '^');
+  
+      // Check for operator in expression
+      let operator = '';
+      let n1, n2;
+  
+      if (expression.includes('+')) {
+        operator = '+';
+        [n1, n2] = expression.split('+').map(num => num.trim());
+      } else if (expression.includes('-')) {
+        operator = '-';
+        [n1, n2] = expression.split('-').map(num => num.trim());
+      } else if (expression.includes('*')) {
+        operator = '*';
+        [n1, n2] = expression.split('*').map(num => num.trim());
+      } else if (expression.includes('/')) {
+        operator = '/';
+        [n1, n2] = expression.split('/').map(num => num.trim());
+      } else if (expression.includes('^')) {
+        operator = '^';
+        [n1, n2] = expression.split('^').map(num => num.trim());
+      } else if (expression.includes('%')) {
+        operator = '%';
+        [n1, n2] = expression.split('%').map(num => num.trim());
+      }
+  
+      // Handle square root separately (only one operand)
+      if (expression.includes('Math.sqrt')) {
+        operator = '√';
+        n1 = expression.replace('Math.sqrt(', '').replace(')', '').trim();
+      }
+  
+      // If operator is found, build the URL
+      if (operator) {
+        const encodedN1 = encodeURIComponent(n1);
+        const encodedN2 = operator === '√' ? null : encodeURIComponent(n2);
+  
+        const url = getOperationUrl(operator, encodedN1, encodedN2);  // Pass n1 and n2 separately for non-square-root operations
+        console.log(`URL to fetch: ${url}`);  // Log the URL to be requested
+  
+        fetch(url)
+          .then(response => response.text())  // Assuming server returns plain text
+          .then(data => {
+            display.value = data;  // Update the display with the result from the server
+          })
+          .catch(error => {
+            display.value = 'Error';
+            console.error('Error:', error);
+          });
+      } else {
+        display.value = 'Error: Invalid Operator';
+      }
+    }
+  
+    // Helper function to build the URL based on the operator
+    function getOperationUrl(operator, n1, n2) {
+      switch (operator) {
+        case '+':
+          return `/add?n1=${n1}&n2=${n2}`;
+        case '-':
+          return `/subtract?n1=${n1}&n2=${n2}`;
+        case '*':
+          return `/multiply?n1=${n1}&n2=${n2}`;
+        case '/':
+          return `/divide?n1=${n1}&n2=${n2}`;
+        case '^':
+          return `/exponentiate?n1=${n1}&n2=${n2}`;
+        case '√':
+          return `/squareRoot?n1=${n1}`;  // Only pass n1 for square root
+        case '%':
+          return `/modulo?n1=${n1}&n2=${n2}`;
+        default:
+          return `/add?n1=${n1}&n2=${n2}`; // Default to addition if operator is unknown
+      }
+    }
+  </script>
+  
+</body>
+</html>
