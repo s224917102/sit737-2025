@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-v1
+  labels:
+    run: my-pod-v1
+spec:
+  containers:
+  - image: anushakatuwal99/calculator-web-server:v1
+    name: calculator-web-server
+    ports:
+    - containerPort: 3090
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
