@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Payment</title>
+    <link rel="stylesheet" href="css/payement.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div id="payment-container">
+        <h2>Complete Your Payment</h2>
+        <p>Please provide your payment details to confirm your booking.</p>
+
+        <!-- Payment Form -->
+        <form id="payment-form">
+            <div>
+                <label for="card-element">Card Details:</label>
+                <div id="card-element"></div> <!-- Stripe's Card Element -->
+            </div>
+            <button type="submit" id="pay-now">Pay Now</button>
+        </form>
+
+        <div id="payment-status"></div>
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script> <!-- Stripe JS -->
+    <script src="js/main.js"></script>
+
+    <script src="js/payement.js"></script>
+</body>
+
+</html>

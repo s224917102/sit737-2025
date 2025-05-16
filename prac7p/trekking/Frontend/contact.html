@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/contact.css">
+  <title>TrekNepal- Discover Your Next Adventure</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo" class="nav-logo">
+        <span>TrekNepal</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="trips.html">Treks</a>
+        <a href="guides.html">Guides</a>
+        <a href="specific_agency.html">Agencies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <div class="nav-auth" id="nav-auth">
+        <a href="login.html"> <button class="btn-login" style=" margin-right: 10px;">Login</button></a>
+        <a href="signup.html"> <button class="btn-primary">Sign Up</button></a>
+      </div>
+
+      <!-- Profile section to display when the user is logged in -->
+      <div class="nav-profile" id="nav-profile" style="display: none;">
+        <a href="profile.html"><button class="btn-primary" style=" margin-right: 10px;">Profile</button></a>
+        <button id="logoutButton" class="btn-login">Logout</button>
+      </div>
+
+    </div>
+  </nav>
+  <section class="contact-section">
+    <div class="contact-left">
+      <h4>Reach Us</h4>
+      <h2>Get Touch With Us</h2>
+      <div class="contact-info">
+        <div class="info-item">
+          <i class="icon-location"></i>
+          <div>
+            <h5>Regional Office</h5>
+            <p>Burwoord</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="icon-phone"></i>
+          <div>
+            <h5>Call Us</h5>
+            <p>04123 566 789</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="icon-chat"></i>
+          <div>
+            <h5>Chat To Us</h5>
+            <p>admin@admin.com</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="contact-right">
+      <h3>Have Any Questions?</h3>
+      <p>
+        Leo duis ut diam quam nulla porttitor massa id. Dictum at tempor commodo
+        ullamcorper. Sit amet cursus sit amet sit amet commodo dictum.
+      </p>
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+
+        <div class="form-group">
+          <label for="travel-date">Date To Travel</label>
+          <!-- Hidden input with access key -->
+          <input type="hidden" name="access_key" value="e6cf57f2-82b7-444c-98af-4574c0ebe444">
+          <!-- Added name attribute for travel date -->
+          <input type="date" id="travel-date" name="travel_date">
+        </div>
+
+        <div class="form-group">
+          <label for="destination">Choose Place</label>
+          <!-- Added name attribute for destination -->
+          <select id="destination" name="destination">
+            <option value="" disabled selected>Destinations</option>
+            <option value="Paris">Annapurna Base Camp</option>
+            <option value="New York">Everest Base Camp</option>
+            <option value="Bali">Rara Lake</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="guests">No Of People To Travel</label>
+          <!-- Added name attribute for number of guests -->
+          <input type="number" id="guests" name="number_of_guests" min="1" placeholder="Guests">
+        </div>
+
+        <div class="form-group">
+          <label>Choose Category</label>
+          <div class="checkbox-group">
+            <!-- Added name attribute for category with same name but different values -->
+            <label><input type="checkbox" name="category" value="Corporate"> Corporate</label>
+            <label><input type="checkbox" name="category" value="Friends"> Friends</label>
+            <label><input type="checkbox" name="category" value="Family"> Family</label>
+            <label><input type="checkbox" name="category" value="Couples"> Couples</label>
+            <label><input type="checkbox" name="category" value="Single"> Single</label>
+            <label><input type="checkbox" name="category" value="Other"> Other</label>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">SUBMIT NOW</button>
+      </form>
+
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Pages</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trips.html">Treks</a></li>
+            <li><a href="#">Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Safety</a></li>
+            <li><a href="#">Cancellation</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TrekNepal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

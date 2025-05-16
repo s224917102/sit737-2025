@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OpenStreetMap Routing Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Map container styling -->
+    <style>
+        #map {
+            height: 700px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Route from Werribee South to Werribee Station</h3>
+    <div id="map"></div>
+
+    <!-- Leaflet.js and Routing Machine JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([-37.9552, 144.6515], 13);
+
+        // Load OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Set up points (Werribee South and Werribee Station)
+        var pointA = L.latLng(-37.965095, 144.704841); // Werribee South
+        var pointB = L.latLng(-37.8992, 144.6610); // Werribee Station
+
+        // var pointA = L.latLng(28.424199, 83.818122); // ABC
+        // var pointB = L.latLng(28.530737, 83.877818); //chomrong
+
+
+        // Add the route using OSRM
+        L.Routing.control({
+            waypoints: [
+                pointA, // Start point (Werribee South)
+                pointB  // End point (Werribee Station)
+            ],
+            lineOptions: {
+                styles: [{ color: 'blue', weight: 4 }] // Customize the route line
+            },
+            routeWhileDragging: false, // Disable dragging route
+            addWaypoints: false, // Disable adding new waypoints
+            createMarker: function (i, waypoint, n) {
+                var markerTitle = (i === 0) ? "Start: Werribee South" : "End: Werribee Station";
+                return L.marker(waypoint.latLng).bindPopup(markerTitle).openPopup();
+            }
+        }).addTo(map);
+    </script>
+
+</body>
+
+</html>

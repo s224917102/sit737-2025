@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand" onclick="window.location.href='index.html'">
+                <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo"
+                    class="nav-logo">
+                <span>TrekNepal</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="trips.html">Treks</a>
+                <a href="guides.html">Guides</a>
+                <a href="specific_agency.html">Agencies</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-auth">
+                <a href="login.html"> <button class="btn-login">Login</button></a>
+                <a href="signup.html"> <button class="btn-primary">Sign Up</button></a>
+            </div>
+
+        </div>
+    </nav>
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Log In</button>
+        </form>
+        <div class="form-footer">
+            <p>Don't have an account? <a href="/signup.html">Sign Up</a></p>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/auth_api.js"></script>
+</body>
+
+</html>

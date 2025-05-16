@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container-profile {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.detail-item .label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #565e64;
+}
+
+#editProfileForm {
+    margin-top: 20px;
+    text-align: left;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#editProfileForm h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

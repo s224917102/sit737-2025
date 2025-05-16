@@ -1,0 +1,198 @@
+.hero {
+    position: relative;
+    height: 500px;
+    background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white);
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.search-box {
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+/* Add this to your hero.css or a new CSS file */
+/* Search Modal Styles */
+.search-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure it's on top of other elements */
+}
+
+.search-modal-content {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    /* Fixed height for the modal */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.search-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-modal-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.close-modal {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.close-modal:hover {
+    color: var(--text-primary);
+}
+
+.search-modal-body {
+    margin-bottom: 1rem;
+    flex: 1;
+    /* Allow the body to take up remaining space */
+    overflow-y: auto;
+    /* Add scrollbar if content overflows */
+}
+
+#modalSearchInput {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--text-secondary);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.search-results {
+    margin-top: 1rem;
+    max-height: 300px;
+    /* Fixed height for the results container */
+    overflow-y: auto;
+    /* Add scrollbar if content overflows */
+}
+
+.search-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+/* Trek Card Styles */
+.trek-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--text-secondary);
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.trek-card:hover {
+    background-color: #f9f9f9;
+}
+
+.trek-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.trek-card p {
+    margin: 0.25rem 0;
+    color: var(--text-secondary);
+}
+
+
+
+/* Filters Section */
+.filters {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.filter select,
+.filter input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--text-secondary);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+}

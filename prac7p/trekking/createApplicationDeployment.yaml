@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trekking-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: trekking-app
+  template:
+    metadata:
+      labels:
+        app: trekking-app
+    spec:
+      containers:
+      - name: trekking
+        image: anushakatuwal99/trekking-web-server:v1
+        env:
+        - name: MONGO_USER
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-config
+              key: username
+        - name: MONGO_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: password
+        - name: MONGO_URI
+          value: >-
+            mongodb://$(MONGO_USER):$(MONGO_PASS)@mongodb.default.svc.cluster.local:27017/trekkingDB?replicaSet=rs0&directConnection=false
+        ports:
+        - containerPort: 3000

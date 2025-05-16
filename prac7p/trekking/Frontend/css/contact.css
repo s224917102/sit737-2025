@@ -1,0 +1,197 @@
+/* General Reset */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background:url('../images/trekker-1.jpg') no-repeat center center/cover !important;
+  color: #333; /* Ensure text is readable */
+  box-sizing: border-box;
+}
+ 
+
+  /* Left Section */
+  .contact-section {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 20px;
+    color: #fff;
+    overflow: hidden;
+  }
+  
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #333; */
+    /* background: url('../images/trek-1.jpg') no-repeat center center/cover; */
+    opacity: 0.9; /* Adjust opacity as needed */
+    z-index: -1; /* Ensure it stays behind the content */
+  }
+  
+  /* Left Section */
+  .contact-left {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    color: black;
+    background-color: white;
+    padding-left: 30px;
+    padding-top: 10px;
+    border-radius: 10px;
+  }
+  
+  .contact-left h4 {
+    font-size: 18px;
+    color: black;
+  }
+  
+  .contact-left h2 {
+    font-size: 32px;
+    color: black;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info {
+    margin-bottom: 20px;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .info-item i {
+    font-size: 20px;
+    color: #ffcc00;
+    margin-right: 15px;
+  }
+  
+  .info-item h5 {
+    font-size: 16px;
+    margin: 0 0 5px;
+  }
+  
+  .info-item p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  /* Fix for Invisible Text */
+  .contact-left h4, .contact-left h2, .info-item h5, .info-item p {
+    color: black !important; /* Ensure text is white */
+  }
+  
+  /* Adventure Box */
+  .adventure-box {
+    /* background: rgba(255, 255, 255, 0.9); */
+    background: black;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  /* Right Section */
+  .contact-right {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    background: #004080;
+    color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+  }
+  
+  .contact-right h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .contact-right p {
+    font-size: 14px;
+    color: #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .form-group {
+    flex: 1 1 calc(50% - 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input, .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border: 1px solid #ffcc00;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .checkbox-group label {
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffcc00;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #e6b800;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .contact-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .contact-left, .contact-right {
+      max-width: 100%;
+    }
+  
+    .contact-form .form-group {
+      flex: 1 1 100%;
+    }
+  }
+  

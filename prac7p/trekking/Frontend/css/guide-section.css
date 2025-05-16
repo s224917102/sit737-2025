@@ -1,0 +1,93 @@
+/* Guide Section Styling */
+.guide-section {
+    position: relative;
+    height: 400px; /* Adjust height as needed */
+    background-image: url('../images/everest.jpeg'); /* Correct path based on your structure */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px; /* Add padding for top/bottom and left/right */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 1200px; /* Limit the maximum width of the section */
+    margin: 0 auto; /* Center the section */
+  }
+  
+  /* Guide Content Styling */
+  .guide-content {
+    color: #fff;
+    text-align: left;
+  }
+  
+  .guide-content h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .guide-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  .explore-button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .explore-button:hover {
+    background-color: lightblue; /* Change to a dark green */
+    color: #fff;
+    transform: scale(1.05);
+  }
+  
+  /* Optional Overlay for Better Text Visibility */
+  .guide-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    z-index: 1;
+  }
+  
+  .guide-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .guide-section {
+      height: 300px;
+      padding: 20px;
+      max-width: 90%; /* Reduce width on smaller screens */
+    }
+  
+    .guide-content h1 {
+      font-size: 28px;
+    }
+  
+    .guide-content p {
+      font-size: 16px;
+    }
+  
+    .explore-button {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+  }
+  

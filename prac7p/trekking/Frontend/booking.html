@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Your Trek</title>
+    <link rel="stylesheet" href="css/booking_form.css" />
+</head>
+
+<body>
+    <div class="booking-container">
+        <div class="form-wrapper">
+            <h1 class="form-heading">Book Your Adventure</h1>
+
+
+
+            <form id="booking-form" class="booking-form">
+                <!-- Full-width field -->
+                <div class="form-field full-width">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required />
+                </div>
+
+                <!-- Row: Start Date and End Date -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" id="startDate" name="startDate" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="endDate">End Date:</label>
+                        <input type="date" id="endDate" name="endDate" required />
+                    </div>
+                </div>
+
+                <!-- Full-width field -->
+                <div class="form-field full-width">
+                    <label for="numberOfPeople">Number of People:</label>
+                    <input type="number" id="numberOfPeople" name="numberOfPeople" min="1" max="20" required />
+                </div>
+
+                <!-- Row: Email and Phone -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required />
+                    </div>
+                </div>
+
+                <!-- Full-width field for Agency Select -->
+                <div class="form-field full-width">
+                    <label for="agencySelect">Select Agency</label>
+                    <select id="agencySelect" name="agencyId" required>
+                        <option value="" disabled selected>Select Agency</option>
+                        <!-- Agencies will be dynamically loaded here -->
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Book Now</button>
+            </form>
+
+            <div id="booking-status" class="status-message"></div>
+        </div>
+    </div>
+
+    <script src="js/booking.js"></script>
+
+</body>
+
+</html>

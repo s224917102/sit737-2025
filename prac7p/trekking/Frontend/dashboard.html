@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrekNepal | Admin Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="responsive.css" />
+    <!-- Include SweetAlert2 CSS if needed -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <style>
+        /* Optional: simple style to hide content sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Chat Toggle Button -->
+    <button id="chatToggleButton">Chat</button>
+    <!-- Chat Widget -->
+    <div id="chatWidget">
+        <div id="chatHeader">Chat - User</div>
+        <div id="chatBody">
+            <ul id="chatMessages"></ul>
+        </div>
+        <div id="chatInputContainer">
+            <input id="chatInput" type="text" placeholder="Type a message..." />
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+    <!-- Header -->
+    <header>
+        <div class="logosec">
+            <div class="nav-brand">
+
+                <span> <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo"
+                        class="nav-logo"> TrekNepal</span>
+
+            </div>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+                class="icn menuicn" id="menuicn" alt="menu-icon" />
+        </div>
+        <!-- ... other header content ... -->
+
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <!-- Assign a data-target that matches the id of the content section -->
+                    <div class="nav-option option1 active" data-target="usersContent">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182148/Untitled-design-(29).png"
+                            class="nav-img" alt="dashboard" />
+                        <h3>Users</h3>
+                    </div>
+                    <div class="nav-option option2" data-target="treksContent">
+                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo"
+                            class="nav-logo">
+                        <!--  -->
+                        <h3>Treks</h3>
+                    </div>
+                    <div class="nav-option option3" data-target="bookingsContent">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183320/5.png"
+                            class="nav-img" alt="bookings" />
+                        <h3>Bookings</h3>
+                    </div>
+
+                    <div class="nav-option option4" data-target="agenciesContent">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/9.png"
+                            class="nav-img" alt="agencies" />
+                        <h3>Agencies</h3>
+                    </div>
+
+                    <div class="nav-option option5" data-target="guidesContent">
+                        <img src="./images/tour-guide.png" class="nav-img" alt="guides" />
+                        <h3>Guides</h3>
+                    </div>
+
+
+                    <div class="nav-option logout" id="logoutButton">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png"
+                            class="nav-img" alt="logout" />
+                        <h3>Logout</h3>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <!-- Content Section for Dashboard -->
+            <div id="usersContent" class="content-section active">
+                <h1>All Users</h1>
+                <div id="usersList">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersListBody">
+                            <!-- All users will be dynamically populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Content Section for Treks -->
+            <div id="treksContent" class="content-section">
+                <h1>Treks</h1>
+                <!-- Put your Treks-specific content here -->
+                <!-- For example, you can integrate your Trek Destinations Management section here -->
+                <section id="trek-management">
+                    <form id="createTrekForm">
+                        <h3 id="form-title">Create New Trek Destination</h3>
+                        <input type="text" id="trekName" placeholder="Trek Name" required />
+                        <input type="text" id="trekImages" placeholder="Images (comma-separated URLs)" required />
+                        <textarea id="trekDescription" placeholder="Description" required></textarea>
+                        <input type="number" id="trekTotalDays" placeholder="Total Days" required />
+                        <input type="number" id="trekExpenses" placeholder="Expenses" required />
+                        <input type="text" id="trekDifficultyLevel" placeholder="Difficulty Level" required />
+                        <input type="number" id="trekMaxAltitude" placeholder="Max Altitude" required />
+                        <input type="text" id="trekBestSeason" placeholder="Best Season" required />
+                        <input type="text" id="trekMap" placeholder="Trek Map URL" required />
+                        <input type="String" id="trekTotalDistance" placeholder="Total Distance" required />
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <!-- Trek List -->
+                    <div id="trekList">
+                        <h3>All Trek Destinations</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trekListBody">
+                                <!-- Dynamically populated trek destinations -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <!-- Content Section for Booking -->
+            <div id="bookingsContent" class="content-section">
+                <h1>All Bookings</h1>
+                <div id="bookingsList">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>Trek</th>
+                                <th>Agency</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>No. of People</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsListBody">
+                            <!-- All bookings will be dynamically populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Content Section for agency -->
+            <div id="agenciesContent" class="content-section">
+                <h1>Travel Agencies Management</h1>
+
+                <!-- Create/Edit Form -->
+                <section id="agency-management">
+                    <h2>Agency Management</h2>
+                    <form id="createAgencyForm">
+                        <h3 id="agency-form-title">Create New Agency</h3>
+                        <input type="text" id="agencyName" placeholder="Agency Name" required />
+                        <input type="email" id="agencyEmail" placeholder="Email" required />
+                        <input type="text" id="agencyPhone" placeholder="Phone" required />
+                        <input type="text" id="agencyAddress" placeholder="Address" required />
+                        <textarea id="agencyDescription" placeholder="Description" required></textarea>
+                        <input type="text" id="agencyImage" placeholder="Image URL" required />
+                        <input type="text" id="agencyServices" placeholder="Services (comma-separated)" required />
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <!-- Agencies List -->
+                    <div id="agencyList">
+                        <h3>All Agencies</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Description</th>
+                                    <th>Services</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="agencyListBody">
+                                <!-- Dynamically populated agency rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <!-- Content Section for guides -->
+            <div id="guidesContent" class="content-section">
+                <h1>Guides Management</h1>
+                <!-- Guide Management Form (for Create and Edit) -->
+                <section id="guide-management">
+                    <form id="createGuideForm">
+                        <h3 id="guide-form-title">Create New Guide</h3>
+                        <input type="text" id="guideTitle" placeholder="Guide Title" required />
+                        <textarea id="guideDescription" placeholder="Guide Description" required></textarea>
+                        <textarea id="guideContent" placeholder="Guide Content" required></textarea>
+                        <input type="text" id="guideCategory" placeholder="Guide Category" required />
+                        <input type="text" id="guideFeaturedImage" placeholder="Featured Image URL" required />
+                        <input type="text" id="guideImages" placeholder="Gallery Images (comma-separated URLs)"
+                            required />
+                        <input type="text" id="guideTags" placeholder="Tags (comma-separated)" required />
+                        <input type="text" id="guideAuthor" placeholder="Author" required />
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <!-- Guides List Table -->
+                    <div id="guideList">
+                        <h3>All Guides</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Author</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="guideListBody">
+                                <!-- Dynamically populated rows go here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Scripts -->
+            <script src="js/dashboard.js"></script>
+            <script src="js/auth_api.js"></script>
+            <!-- Include SweetAlert2 JS if needed -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
