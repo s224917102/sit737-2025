@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrekNepal - Discover Your Next Adventure</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo" class="nav-logo">
+        <span>TrekNepal</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="trips.html">Treks</a>
+        <a href="guides.html">Guides</a>
+        <a href="specific_agency.html">Agencies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-auth" id="nav-auth">
+        <a href="login.html"> <button class="btn-login" style=" margin-right: 10px;">Login</button></a>
+        <a href="signup.html"> <button class="btn-primary">Sign Up</button></a>
+      </div>
+
+      <!-- Profile section to display when the user is logged in -->
+      <div class="nav-profile" id="nav-profile" style="display: none;">
+        <a href="profile.html"><button class="btn-primary" style=" margin-right: 10px;">Profile</button></a>
+        <button id="logoutButton" class="btn-login">Logout</button>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="image-container">
+      <img src="images/trekker-1.jpg" alt="Backpackers">
+    </div>
+    <div class="content">
+      <h1>Create Unforgettable Memories With Your Love</h1>
+      <p>Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Interdum varius sit amet mattis.
+        Posuere morbi leo urna molestie at sagittis elementum eu facilisis.</p>
+      <div class="features">
+        <div class="feature">
+          <img src="./images/fire.png" alt="Fire Camp">
+          <p>Fire Camp</p>
+        </div>
+        <div class="feature">
+          <img src="./images/trained-guide.png" alt="Trained Guides">
+          <p>Trained Guides</p>
+        </div>
+        <div class="feature">
+          <img src="./images/travel-info.png" alt="Travel Information">
+          <p>Travel Information</p>
+        </div>
+        <div class="feature">
+          <img src="./images/pickup-drop.webp" alt="Pickup and Drop">
+          <p>Pickup And Drop</p>
+        </div>
+      </div>
+      <div class="buttons">
+        <a href="mailto:abc@gmail.com">Email Us</a>
+        <a href="tel:+000123456789">Call +000 1234 56789</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="explore">
+    <h2 style="text-align: center; margin-top: 20px;">Our Adventure Services</h2>
+    <div class="adventure">
+      <div class="menu">
+        <div class="menu-item active" data-index="0">Everest Tour</div>
+        <div class="menu-item" data-index="1">Annapurna Tour</div>
+        <div class="menu-item" data-index="2">Tilicho Lake</div>
+      </div>
+      <div class="display">
+        <img id="display-image" src="./images/everest.jpeg" alt="Display Image">
+        <div class="text-content">
+          <h3 id="display-heading">Everest Tour</h3>
+          <p id="display-description">Explore the serene and beautiful islands with our exclusive tour packages.</p>
+        </div>
+        <div class="navigation-buttons">
+          <button class="nav-button prev">&#9664;</button>
+          <button class="nav-button next">&#9654;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="travel-section">
+    <div class="travel-image">
+      <img src="images/everest.jpeg" alt="Travel Destination">
+    </div>
+    <div class="travel-details">
+      <h2>Places To Travel</h2>
+      <div class="travel-item">
+        <img src="images/personalized-service .png" alt="Icon">
+        <div>
+          <h3>Personalized Service</h3>
+          <p>We provide custom packages tailored to your travel needs and preferences for an unforgettable experience.
+          </p>
+        </div>
+      </div>
+      <div class="travel-item">
+        <img src="images/trekking-tour.jpg" alt="Icon">
+        <div>
+          <h3>Tour Packages</h3>
+          <p>Explore a variety of pre-designed packages that showcase the best destinations at unbeatable prices.</p>
+        </div>
+      </div>
+      <div class="travel-item">
+        <img src="images/location.png" alt="Icon">
+        <div>
+          <h3>Location</h3>
+          <p>Discover handpicked travel spots worldwide, each offering unique cultural and scenic experiences.</p>
+        </div>
+      </div>
+      <div class="travel-item">
+        <img src="images/customer-review.jpg" alt="Icon">
+        <div>
+          <h3>Happy Customers</h3>
+          <p>Join thousands of satisfied travelers who’ve enjoyed seamless journeys and lifetime memories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="faq-header">
+      <h2>Our Expert Answers</h2>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq-menu">
+        <div class="faq-menu-item active">Travel</div>
+        <div class="faq-menu-item">Services</div>
+        <div class="faq-menu-item">Tourist Guides</div>
+        <div class="faq-menu-item">Places</div>
+        <div class="faq-menu-item">Transportation Facilities</div>
+        <div class="faq-menu-item">Booking & Refund</div>
+      </div>
+
+      <div class="faq-details">
+        <div class="faq-item">
+          <h3>What Are The Essential Items To Pack For A Trip? &#9654;</h3>
+          <p>Sed viverra ipsum nunc aliquet bibendum. Ac orci phasellus egestas tellus rutrum tellus pellentesque eu
+            tincidunt.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How Far In Advance Should I Book My Flight/Hotel/Tour? &#9654;</h3>
+          <p>Facilisis magna etiam tempor orci eu lobortis elementum nibh tellus molestie nunc non blandit.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How Can I Stay Safe While Traveling Abroad? &#9654;</h3>
+          <p>Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What Are Some Tips For Saving Money On Travel? &#9654;</h3>
+          <p>Vel facilisis volutpat est velit egestas dui id ornare arcu odio ut sem nulla pharetra diam sit amet nisl
+            suscipit adipiscing.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How Can I Stay Healthy While Traveling? &#9654;</h3>
+          <p>Consectetur adipiscing elit ut aliquam purus sit amet luctus venenatis lectus magna fringilla urna
+            porttitor.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-footer">
+      <a href="#">CAN'T SEEM TO FIND YOUR QUERIES</a>
+      <span>&#9742; 000 - 123 - 456789</span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Pages</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trips.html">Treks</a></li>
+            <li><a href="#">Guides</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Safety</a></li>
+            <li><a href="#">Cancellation</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TrekNepal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/about.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/trips.css">
+  <title>TrekNepal</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand" onclick="window.location.href = '/index.html'; ">
+        <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo" class="nav-logo">
+        <span>TrekNepal</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="trips.html" class="active">Treks</a>
+        <a href="guides.html">Guides</a>
+        <a href="specific_agency.html">Agencies</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-auth" id="nav-auth">
+        <a href="login.html"> <button class="btn-login" style=" margin-right: 10px;">Login</button></a>
+        <a href="signup.html"> <button class="btn-primary">Sign Up</button></a>
+      </div>
+
+      <!-- Profile section to display when the user is logged in -->
+      <div class="nav-profile" id="nav-profile" style="display: none;">
+        <a href="profile.html"><button class="btn-primary" style=" margin-right: 10px;">Profile</button></a>
+        <button id="logoutButton" class="btn-login">Logout</button>
+      </div>
+
+      <button class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  <section id="travel-section">
+    <div class="section-header">
+      <h2>Explore Top Destinations</h2>
+      <p>Find the perfect trip for your next adventure.</p>
+      <!-- Filter Dropdown -->
+      <div class="filter-container">
+        <label for="difficulty-filter">Filter by Difficulty:</label>
+        <select id="difficulty-filter">
+          <option value="all">All</option>
+          <option value="easy">Easy</option>
+          <option value="moderate">Moderate</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+    <div id="travel-cards" class="cards-container"></div>
+    <div id="pagination" class="pagination-container"></div>
+  </section>
+
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>About Us</h3>
+          <ul class="footer-links">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Safety</a></li>
+            <li><a href="#">Cancellation</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TrekNepal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="js/trips.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

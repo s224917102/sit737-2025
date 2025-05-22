@@ -1,0 +1,158 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --background: #f9fafb;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-link:hover {
+    color: var(--primary-hover);
+}
+
+.btn-link img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Chat Widget Container */
+#chatWidget {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+#chatHeader {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#chatBody {
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#chatMessages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#chatMessages li {
+    margin-bottom: 10px;
+    padding: 5px;
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+/* Style for messages sent by the current user/admin */
+#chatMessages li.sent {
+    text-align: right;
+    background-color: #dcf8c6;
+    /* Light green for sent messages */
+    margin-left: auto;
+    margin-right: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+/* Style for messages received from the other party */
+#chatMessages li.received {
+    text-align: left;
+    background-color: #95e2ee;
+    /* White for received messages */
+    margin-left: 10px;
+    margin-right: auto;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+#chatInputContainer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+#chatInput {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#sendButton {
+    margin-left: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ops-agent
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: ops-agent
+  template:
+    metadata:
+      labels:
+        name: ops-agent
+    spec:
+      tolerations:
+        - operator: Exists
+      hostPID: true
+      hostNetwork: true
+      containers:
+        - name: ops-agent
+          image: gcr.io/google-cloud-ops-agent/google-cloud-ops-agent:latest
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: host-root
+              mountPath: /rootfs
+              readOnly: true
+            - name: etc-dir
+              mountPath: /etc
+              readOnly: true
+            - name: var-dir
+              mountPath: /var
+              readOnly: true
+      volumes:
+        - name: host-root
+          hostPath:
+            path: /
+        - name: etc-dir
+          hostPath:
+            path: /etc
+        - name: var-dir
+          hostPath:
+            path: /var

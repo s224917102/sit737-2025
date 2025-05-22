@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <title>TrekNepal - Discover Your Next Adventure</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/guide-section.css">
+
+    <style>
+        /* Floating Chat Button */
+        #chatToggleButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- Floating Chat Toggle Button -->
+    <button id="chatToggleButton">Chat</button>
+    <!-- Chat Widget -->
+    <div id="chatWidget">
+        <div id="chatHeader">Chat - Admin</div>
+        <div id="chatBody">
+            <ul id="chatMessages"></ul>
+        </div>
+        <div id="chatInputContainer">
+            <input id="chatInput" type="text" placeholder="Type a message..." />
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand" onclick="window.location.href = '/index.html'; ">
+
+                <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo"
+                    class="nav-logo">
+                <span>TrekNepal</span>
+            </div>
+
+
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="trips.html">Treks</a>
+                <a href="guides.html">Guides</a>
+                <a href="specific_agency.html">Agencies</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-auth" id="nav-auth">
+                <a href="login.html"> <button class="btn-login" style=" margin-right: 10px;">Login</button></a>
+                <a href="signup.html"> <button class="btn-primary">Sign Up</button></a>
+            </div>
+
+            <!-- Profile section to display when the user is logged in -->
+            <div class="nav-profile" id="nav-profile" style="display: none;">
+                <a href="profile.html"><button class="btn-primary" style=" margin-right: 10px;">Profile</button></a>
+                <button id="logoutButton" class="btn-login">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content container">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Join our community of passionate trekkers and explore the world's most breathtaking trails.</p>
+            <div class="search-box">
+                <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/search.svg" alt="Search"
+                    class="search-icon">
+                <input type="text" id="searchInput" placeholder="Search for treks...">
+                <button id="searchButton" class="btn-primary">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pop-up Search Modal -->
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h2>Search Treks</h2>
+                <span id="closeModal" class="close-modal">&times;</span>
+            </div>
+            <div class="search-modal-body">
+
+                <input type="text" id="modalSearchInput" placeholder="Search for treks...">
+
+                <div id="modalSearchResults" class="search-results"></div>
+            </div>
+            <div class="search-modal-footer">
+                <button id="modalSearchButton" class="btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+
+    <main>
+        <section class="featured-trek container">
+            <div class="featured-card">
+                <div class="featured-image">
+                    <img alt="featured-img"
+                        src="https://www.intrepidtravel.com/v3/assets/blt0de87ff52d9c34a8/blt52ca437014b1b15e/63c9328e8bec7c3a7c0f5f2f/HNXS_Intrepid_Travel-Nepal_Annapurna-Basecamp_2019_79655_1.jpg?branch=prd&width=1080&quality=75&format=pjpg&auto=webp">
+                    <span class="featured-badge">Featured Trek</span>
+                </div>
+                <div class="featured-content">
+                    <h2 id="trek-name"></h2>
+                    <div class="location">
+                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/map-pin.svg" alt="Location">
+                        <span id="location"></span>
+                    </div>
+                    <p id="trek-description"></p>
+
+                    <div class="trek-details">
+                        <div class="detail">
+                            <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/calendar.svg"
+                                alt="Duration">
+
+                            <span id="total-days"></span>
+                        </div>
+                        <div class="detail">
+                            <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo"
+                                class="nav-logo">
+                            <span id="max-altitude"></span>
+                        </div>
+                        <div class="detail">
+
+                            <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/footprints.svg"
+                                alt="Difficulty">
+                            <span id="difficulty-level">Moderate</span>
+                        </div>
+                    </div>
+                    <div class="trek-action">
+                        <div class="price">
+                            <span id="expenses" class="amount"></span>
+                            <span class="period">/person</span>
+                        </div>
+                        <button class="btn-primary btn-large"
+                            onclick="{window.location.href = '/booking.html?id=67833d55e2a49bb02c6a6d5a'}">Reserve
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <div class="guide-content">
+                <h1>Guides to Trekking Destination</h1>
+                <p>Introducing 200+ Trekking Destination Guides</p>
+                <button class="explore-button">Explore Guides</button>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <div class="image-container">
+                <img src="images/trekker-1.jpg" alt="Backpackers">
+            </div>
+            <div class="content">
+                <h1>Create Unforgettable Memories With Your Love</h1>
+                <p>Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Interdum varius sit amet mattis.
+                    Posuere morbi leo urna molestie at sagittis elementum eu facilisis.</p>
+                <p>Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Interdum varius sit amet mattis.
+                    Posuere morbi leo urna molestie at sagittis elementum eu facilisis.</p>
+                <div class="features">
+                    <div class="feature">
+                        <img src="./images/fire.png" alt="Fire Camp">
+                        <p>Fire Camp</p>
+                    </div>
+                    <div class="feature">
+                        <img src="./images/trained-guide.png" alt="Trained Guides">
+                        <p>Trained Guides</p>
+                    </div>
+                    <div class="feature">
+                        <img src="./images/travel-info.png" alt="Travel Information">
+                        <p>Travel Information</p>
+                    </div>
+                    <div class="feature">
+                        <img src="./images/pickup-drop.webp" alt="Pickup and Drop">
+                        <p>Pickup And Drop</p>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <a href="#">More About Us</a>
+                    <a href="tel:+000123456789">Call +000 1234 56789</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="explore">
+            <h2 style="text-align: center; margin-top: 20px;">Explore Destinations</h2>
+            <class class="carousel">
+                <div class="carousel-track">
+                    <!-- Trek destinations will be inserted here dynamically -->
+                </div>
+
+                <div class="carousel-buttons">
+                    <button class="carousel-button prev">&#9664;</button>
+                    <button class="carousel-button next">&#9654;</button>
+                </div>
+            </class>
+        </section>
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for the latest treks and exclusive offers.</p>
+                    <form id="newsletterForm" class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Pages</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="trips.html">Treks</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Cancellation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TrekQuest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Define the current role for this page
+            const currentRole = "user"; // This page is for regular users
+
+            // Connect to Socket.IO
+            const socket = io();
+
+            // Toggle chat widget display
+            const chatToggleButton = document.getElementById("chatToggleButton");
+            const chatWidget = document.getElementById("chatWidget");
+            chatToggleButton.addEventListener("click", function () {
+                if (chatWidget.style.display === "none" || chatWidget.style.display === "") {
+                    chatWidget.style.display = "block";
+                } else {
+                    chatWidget.style.display = "none";
+                }
+            });
+
+            // Send message on clicking the send button
+            const sendButton = document.getElementById("sendButton");
+            const chatInput = document.getElementById("chatInput");
+            sendButton.addEventListener("click", function () {
+                const messageText = chatInput.value.trim();
+                if (messageText) {
+                    // Emit an object containing both the sender and the text
+                    socket.emit("chat message", { sender: currentRole, text: messageText });
+                    chatInput.value = "";
+                }
+            });
+
+            // Listen for incoming messages and display them with appropriate styling
+            socket.on("chat message", function (msg) {
+                const li = document.createElement("li");
+                li.textContent = msg.text;
+
+                // Apply a class based on who sent the message
+                if (msg.sender === currentRole) {
+                    li.classList.add("sent"); // For messages sent by the current user (right side)
+                } else {
+                    li.classList.add("received"); // For messages received (left side)
+                }
+
+                document.getElementById("chatMessages").appendChild(li);
+
+                // Auto-scroll to the bottom of the chat body
+                const chatBody = document.getElementById("chatBody");
+                chatBody.scrollTop = chatBody.scrollHeight;
+            });
+        });
+
+
+        async function getSpecificTrekDetails() {
+            // Extract trek ID from the URL
+
+            // Fetch trek details using the trek ID
+            try {
+                const response = await fetch(`http://localhost:3000/api/treks/67833d55e2a49bb02c6a6d5a`);
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+
+                const trek = await response.json();
+
+                if (response.ok) {
+                    // // Limit description to 60 words
+                    let description = trek.description.split(' ').slice(0, 50).join(' ');
+                    if (trek.description.split(' ').length > 50) {
+                        description += '...';
+                    }
+
+                    // Populate other trek details...
+                    // document.getElementById('trek-title').textContent = trek.name;
+                    document.getElementById('trek-name').textContent = trek.name;
+                    document.getElementById('trek-description').textContent = description;
+                    document.getElementById('difficulty-level').textContent = trek.difficultyLevel;
+                    document.getElementById('total-days').textContent = `${trek.totalDays} Days`;
+                    document.getElementById('max-altitude').textContent = `${trek.maxAltitude} m`;
+                    // document.getElementById('best-season').textContent = trek.bestSeason;
+                    // document.getElementById('total-distance').textContent = trek.totalDistance;
+                    document.getElementById('expenses').textContent = `Nrs.${trek.expenses}`;
+                    document.getElementById('location').textContent = trek.location;
+
+
+                }
+            } catch (error) {
+                console.error('Error fetching trek details:', error);
+                alert('An error occurred while fetching trek details.');
+            }
+        }
+        getSpecificTrekDetails();
+    </script>
+    <!-- <script src="js/utils/dom.js"></script> -->
+    <script src="js/main.js"></script>
+    <!-- <script src="js/trek.js"></script> -->
+    <script src="js/data.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth_api.js"></script>
+    <script src="js/search.js"></script>
+
+</body>
+
+
+</html>
+
+</div>

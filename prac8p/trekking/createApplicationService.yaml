@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: trekking-service-v1
+spec:
+  selector:
+    app: trekking-app
+  type: LoadBalancer        # <- Tells Kubernetes to provision an external load balancer
+  ports:
+    - port: 3000            # In-cluster port
+      targetPort: 3000      # Container port

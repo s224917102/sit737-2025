@@ -1,0 +1,13 @@
+apiVersion: monitoring.googleapis.com/v1
+kind: PodMonitoring
+metadata:
+  name: trekking-app-monitor
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: trekking-app
+  endpoints:
+    - port: "3000"       # port name or number to scrape
+      interval: 30s      # scrape interval
+      path: /metrics     # default if omitted

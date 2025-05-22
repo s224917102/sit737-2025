@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="trek-title">Trek Details</title>
+    <link rel="stylesheet" href="css/specific_trek.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/guide-section.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand" onclick="window.location.href = '/index.html'; ">
+
+                <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.344.0/icons/mountain.svg" alt="Logo"
+                    class="nav-logo">
+                <span>TrekNepal</span>
+            </div>
+
+
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="trips.html">Treks</a>
+                <a href="guides.html">Guides</a>
+                <a href="specific_agency.html">Agencies</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="nav-auth" id="nav-auth">
+                <a href="login.html"> <button class="btn-login" style=" margin-right: 10px;">Login</button></a>
+                <a href="signup.html"> <button class="btn-primary">Sign Up</button></a>
+            </div>
+
+            <!-- Profile section to display when the user is logged in -->
+            <div class="nav-profile" id="nav-profile" style="display: none;">
+                <a href="profile.html"><button class="btn-primary" style=" margin-right: 10px;">Profile</button></a>
+                <button id="logoutButton" class="btn-login">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1 id="trek-name"></h1>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <!-- <img id="trek-image" alt="Trek Image" class="slide"> -->
+                <!-- More images will be inserted dynamically here -->
+            </div>
+            <button class="prev" id="prev">&#10094;</button>
+            <button class="next" id="next">&#10095;</button>
+        </div>
+
+        <div class="description">
+            <h2>Description</h2>
+            <p id="trek-description"></p>
+        </div>
+        <div id="weatherInfo">
+            <p>Loading weather data...</p>
+        </div>
+        <div class="details">
+
+            <h2>Details</h2>
+            <p><strong>Difficulty Level:</strong> <span id="difficulty-level"></span></p>
+            <p><strong>Total Days:</strong> <span id="total-days"></span></p>
+            <p><strong>Max Altitude:</strong> <span id="max-altitude"></span></p>
+            <p><strong>Best Season:</strong> <span id="best-season"></span></p>
+            <p><strong>Total Distance:</strong> <span id="total-distance"></span></p>
+            <p><strong>Expenses:</strong> <span id="expenses"></span></p>
+            <p><strong>Location:</strong> <span id="location"></span></p>
+
+
+
+
+            <button id="book_now_btn" type="click" class="btn-primary">Book Now</button>
+
+            <p></p>
+
+            <a href="https://assets-excellenttrek.b-cdn.net/wp-content/uploads/2020/10/Annapurna-Base-Camp-Trek-Map-1.jpg"
+                target="_blank" style="margin-bottom: 10px;">View Trek Map</a>
+        </div>
+
+
+        <div id="my-review"></div>
+        <!-- Add Review Form Template -->
+        <div id="reviewFormTemplate" style="display:none;">
+            <h3>Add Your Review</h3>
+            <form id="addReviewForm">
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating">
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="3">3 - Good</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="1">1 - Poor</option>
+                </select>
+                <br>
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" rows="4" cols="50"
+                    placeholder="Write your review here..."></textarea>
+                <br>
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+
+
+        <div class="reviews">
+            <h2>Reviews</h2>
+            <div id="reviews-list"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Cancellation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TrekQuest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/trek.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth_api.js"></script>
+
+</body>
+
+</html>
